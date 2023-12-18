@@ -13,11 +13,11 @@
 </div>
 
 <hr>
-  
+
 @if (auth()->check())
-    
+
 @if (session()->has('error_create_comment'))
-    <span>{{ session()->get('error_create_comment') }}</span>    
+    <span>{{ session()->get('error_create_comment') }}</span>
 @endif
 
 <div class="text-center">
@@ -34,7 +34,7 @@
 
 <ul id="comments">
     @forelse ($post->comments as $comment)
-        <li>{{ $comment->comment }} - Autor: {{ $comment->user->fullName }} 
+        <li>{{ $comment->comment }} - Autor: {{ $comment->user->fullName }}
             @if (auth()->check() && auth()->user()->id === $comment->user->id)
                 | <a href="{{ route('comment.destroy', $comment->id) }}">Deletar</a></li>
             @endif

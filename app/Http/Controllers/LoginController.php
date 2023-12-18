@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -12,8 +13,26 @@ class LoginController extends Controller
         return view('login', ['title' => 'Login']);
     }
 
-    public function store()
+    public function store(Request $request)
     {
+        $validated = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
 
+        $logged = Auth::attempt($validated);
+
+        if($logged){
+            return redirect()->intended('/');
+        }
+
+        return back()->with('error_login', 'ocorreu um erro ao fazer o login, tente novamente em alguns segundos');
+    }
+
+    public function destroy()
+    {
+        Auth::logout();
+
+        return redirect('/');
     }
 }

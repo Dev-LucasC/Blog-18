@@ -18,15 +18,15 @@
     <form action="{{ route('login') }}" method="post">
         @csrf
         {{ $errors->first('email') }}
-        <input type="text" name="email" placeholder="email" value="jessie.zieme@example.org">
+        <input type="text" name="email" placeholder="email" value="oberbrunner.alycia@example.net">
         {{ $errors->first('password') }}
         <input type="text" name="password" placeholder="senha" value="123">
-        
+
         <button type="submit">Logar</button>
     </form>
     @else
         <h2>Você já está logado</h2>
     @endif
-    
+
 </div>
 @endsection
