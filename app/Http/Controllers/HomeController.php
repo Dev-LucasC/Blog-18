@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $posts = Post::limit(10)->orderBy('id', 'desc')->get();
+        $posts = Post::limit(10)->with(['user','comments'])->orderBy('id', 'desc')->get();
         logger("Consulta de posts executada com sucesso.");
 
         return view('home', ['title' => 'Home - BLOG', 'posts' => $posts]);

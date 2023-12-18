@@ -10,6 +10,6 @@ class PostController extends Controller
 {
     public function  show(Post $post)
     {
-       return view('post', data:['post' => $post]);
+       return view('post', data:['post' => $post, 'title' => $post->slug]);
     }
 }

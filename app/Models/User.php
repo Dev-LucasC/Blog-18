@@ -44,6 +44,11 @@ class User extends Authenticatable
     ];
 
 
+    public function getFullnameAttribute()
+    {
+        return $this->firstName.' '.$this->lastName;
+    }
+
     public function comments()
     {
         return $this->hasMany(Comment::class);
