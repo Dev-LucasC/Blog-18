@@ -12,7 +12,6 @@ class HomeController extends Controller
     {
         $posts = Post::limit(10)->orderBy('id', 'desc')->get();
         logger("Consulta de posts executada com sucesso.");
-        dump($posts); // Use dump ao invés de dd
 
         return view('home', ['title' => 'Home - BLOG', 'posts' => $posts]);
     }
